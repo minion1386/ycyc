@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)https://haikui.xyz/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角洲租号估价表</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 50%, #c8e6c9 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(76, 175, 80, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #b0f0b2 0%, #66bb6a 100%);
+            color: white;
+            padding: 30px 25px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            flex-shrink: 0;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .title-container {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .form-container {
+            padding: 30px 25px;
+            background: white;
+            position: relative;
+        }
+
+        .name-logo-container {
+            position: absolute;
+            top: 0px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .name-logo {
+            width: 80px;
+            height: 40px;
+            object-fit: contain;
+            /* border-radius: 6px; */
+            /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+            padding: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #000000;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group label::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: -6px;
+            right: -6px;
+            height: 7px;
+            background: linear-gradient(90deg, rgba(50, 215, 140,0.5) 0%, rgba(50, 215, 140,0.5) 100%);
+            border-radius: 2px;
+            z-index: -1;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8f5e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            background: #fafafa;
+            color: #333;
+        }
+
+        /* 多选框特殊样式 */
+        .form-group select[multiple] {
+            min-height: 120px;
+            overflow-y: auto;
+        }
+
+        .form-group select[multiple] option {
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin: 2px 0;
+            cursor: pointer;
+        }
+
+        .form-group select[multiple] option:checked {
+            background: linear-gradient(135deg, #b0f0b2 0%, #66bb6a 100%);
+            color: white;
+            font-weight: 500;
+        }
+
+        .form-group select[multiple] option:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        /* 自定义多选下拉框样式 */
+        .custom-multiselect {
+            position: relative;
+            width: 100%;
+        }
+
+        .multiselect-display {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8f5e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            background: #fafafa;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .multiselect-display:hover {
+            border-color: #4caf50;
+            background: white;
+        }
+
+        .multiselect-display.active {
+            border-color: #4caf50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .multiselect-selected {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .multiselect-tag {
+            background: linear-gradient(135deg, #b0f0b2 0%, #66bb6a 100%);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .multiselect-tag .remove {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .multiselect-placeholder {
+            color: #9e9e9e;
+            font-style: italic;
+        }
+
+        .multiselect-arrow {
+            margin-left: 8px;
+            font-size: 12px;
+            color: #666;
+            transition: transform 0.2s ease;
+        }
+
+        .multiselect-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .multiselect-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #4caf50;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .multiselect-dropdown.show {
+            display: block;
+        }
+
+        .multiselect-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .multiselect-option:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .multiselect-option.selected {
+            background: rgba(76, 175, 80, 0.2);
+            font-weight: 500;
+        }
+
+        .multiselect-option input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: #9e9e9e;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #4caf50;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        /* AWM字段特殊字体样式 */
+        #awm {
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif !important;
+        }
+        
+        /* AWM标签字体样式 */
+        label[for="awm"] {
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif !important;
+        }
+        
+        /* 温馨提示样式 */
+        .tip-text {
+            font-size: 12px;
+            color: #ff9800;
+            margin-top: 6px;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #b0f0b2 0%, #66bb6a 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 25px;
+            letter-spacing: 0.5px;
+            /* iOS触摸优化 */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+            background: linear-gradient(135deg, #b0f0b2 0%, #5cb85c 100%);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        /* iOS触摸状态样式 */
+        .copy-btn:active,
+        .copy-btn:focus {
+            transform: scale(0.98);
+            outline: none;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+            font-weight: 500;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .title-container {
+                min-width: auto;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+                letter-spacing: 0.3px;
+            }
+            
+            .form-container {
+                padding: 25px 20px;
+            }
+
+            .name-logo-container {
+                top: 12px;
+                left: 20px;
+            }
+
+            .name-logo {
+                width: 70px;
+                height: 35px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .form-group input, .form-group textarea, .form-group select {
+                font-size: 16px;
+                padding: 12px 16px;
+            }
+            
+            .copy-btn {
+                font-size: 16px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body cz-shortcut-listen="true">
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <div class="title-container">
+                    <h1>三角洲租号估价表</h1>
+                    <p>填写账号信息，一键复制到剪切板</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <form id="gameForm">
+                <div class="form-group">
+                    <label for="loginMethod">上号方式</label>
+                    <select id="loginMethod" name="loginMethod">
+                        <option value="" disabled="" selected="">请选择上号方式</option>
+                        <option value="QQ账号密码">QQ账号密码</option>
+                        <option value="QQ扫码">QQ扫码</option>
+                        <option value="VX扫码">VX扫码</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rank">段位</label>
+                    <select id="rank" name="rank">
+                        <option value="" disabled="" selected="">请选择段位</option>
+                        <option value="青铜">青铜</option>
+                        <option value="白银">白银</option>
+                        <option value="黄金">黄金</option>
+                        <option value="铂金">铂金</option>
+                        <option value="钻石">钻石</option>
+                        <option value="黑鹰">黑鹰</option>
+                        <option value="巅峰">巅峰</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="kd">绝密KD</label>
+                    <input type="text" id="kd" name="kd" placeholder="请输入绝密KD">
+                </div>
+
+                <div class="form-group">
+                    <label for="hafuCoin">哈夫币纯币(单位M，1M=100W)</label>
+                    <input type="text" id="hafuCoin" name="hafuCoin" placeholder="请输入哈夫币数量，保留小数点后一位" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" onblur="this.value = parseFloat(this.value || 0).toFixed(1);">
+                    <div class="tip-text">温馨提示:纯币小于20M无法寄售租赁</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="level">等级</label>
+                    <input type="text" id="level" name="level" placeholder="请输入等级">
+                </div>
+
+                <div class="form-group">
+                    <label for="insuranceSlots">保险格数</label>
+                    <select id="insuranceSlots" name="insuranceSlots">
+                        <option value="" disabled="" selected="">请选择保险格数</option>
+                        <option value="2">2格</option>
+                        <option value="4">4格</option>
+                        <option value="6">6格</option>
+                        <option value="9">9格</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="stamina">体力(训练中心)</label>
+                    <input type="text" id="stamina" name="stamina" placeholder="请输入体力" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">负重(靶场等级)</label>
+                    <input type="text" id="weight" name="weight" placeholder="请输入负重" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="awm">AWM子弹数量</label>
+                    <input type="text" id="awm" name="awm" placeholder="请输入AWM信息">
+                    <div class="tip-text">
+                        温馨提示:仓库打手用完号主验号单独计费：<br>
+                        6套按照头2米甲3米<br>
+                        6级弹16米/1组；AWM1米/1发<br>
+                        除了6头6甲A大金弹还有纪念物品自己提前截图保留仓库其余都算赠送
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="helmet6">6头数量</label>
+                    <input type="text" id="helmet6" name="helmet6" placeholder="请输入6头信息">
+                </div>
+
+                <div class="form-group">
+                    <label for="armor6">6甲数量</label>
+                    <input type="text" id="armor6" name="armor6" placeholder="请输入6甲信息">
+                </div>
+
+                <div class="form-group">
+                    <label for="knifeSkins">刀皮(有的话回收比例-1)</label>
+                    <div class="custom-multiselect" data-name="knifeSkins">
+                        <div class="multiselect-display" onclick="toggleMultiselect(this)">
+                            <div class="multiselect-selected">
+                                <span class="multiselect-placeholder">请选择刀皮</span>
+                            </div>
+                            <span class="multiselect-arrow">▼</span>
+                        </div>
+                        <div class="multiselect-dropdown">
+                            <div class="multiselect-option" onclick="selectOption(this, '赤雷')">
+                                <input type="checkbox" value="赤雷">
+                                <span>赤雷</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '怜悯')">
+                                <input type="checkbox" value="怜悯">
+                                <span>怜悯</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '影锋')">
+                                <input type="checkbox" value="影锋">
+                                <span>影锋</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '黑海')">
+                                <input type="checkbox" value="黑海">
+                                <span>黑海</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '北极星')">
+                                <input type="checkbox" value="北极星">
+                                <span>北极星</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tip-text">
+                        ps：有人问怎么有皮肤回收比例还低了！这是除法，除数越小回收价越高~
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="operatorSkins">干员红皮(有的话回收比例-1)</label>
+                    <div class="custom-multiselect" data-name="operatorSkins">
+                        <div class="multiselect-display" onclick="toggleMultiselect(this)">
+                            <div class="multiselect-selected">
+                                <span class="multiselect-placeholder">请选择干员红皮</span>
+                            </div>
+                            <span class="multiselect-arrow">▼</span>
+                        </div>
+                        <div class="multiselect-dropdown">
+                            <div class="multiselect-option" onclick="selectOption(this, '蚀金玫瑰')">
+                                <input type="checkbox" value="蚀金玫瑰">
+                                <span>蚀金玫瑰</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '水墨云图')">
+                                <input type="checkbox" value="水墨云图">
+                                <span>水墨云图</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '午夜邮差')">
+                                <input type="checkbox" value="午夜邮差">
+                                <span>午夜邮差</span>
+                            </div>
+                            <div class="multiselect-option" onclick="selectOption(this, '天际线')">
+                                <input type="checkbox" value="天际线">
+                                <span>天际线</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="deposit">押金（租客缴纳，封号赔偿用，号主必填）</label>
+                    <input type="text" id="deposit" name="deposit" placeholder="请输入押金金额">
+                </div>
+
+                <div class="form-group">
+                    <label for="onlineTime">号主在线时间（需配合人脸验证！）</label>
+                    <input type="text" id="onlineTime" name="onlineTime" placeholder="请输入在线时间">
+                </div>
+
+                <div class="form-group">
+                    <label for="banRecord">封禁记录(没有可不填写)</label>
+                    <textarea id="banRecord" name="banRecord" placeholder="请输入封禁记录"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="rentalDays">租期（天）</label>
+                    <input type="text" id="rentalDays" name="rentalDays" placeholder="自动计算" readonly="">
+                    <div class="tip-text">
+                        ps：例如100M的号，最多只会被出租10天，超过租期按照出租金额全额结账
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">联系号码</label>
+                    <input type="tel" id="phone" name="phone" placeholder="请输入联系号码">
+                </div>
+
+                <div class="form-group">
+                    <label for="ratio">回收比例（根据保险系数、体力、负重计算得出）</label>
+                    <input type="text" id="ratio" name="ratio" placeholder="自动计算" readonly="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rent">回收租金（根据哈夫币纯币、比例计算得出）</label>
+                    <input type="text" id="rent" name="rent" placeholder="自动计算" readonly="">
+                </div>
+
+                <button type="button" class="copy-btn" onclick="copyToClipboard()" ontouchstart="this.style.transform='scale(0.95)'" ontouchend="this.style.transform=''">
+                    🚀 复制到剪切板
+                </button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+    <script>
+        // 比例计算逻辑（移动到前面优先定义）
+        function calculateRatio() {
+            const insuranceSlots = document.getElementById('insuranceSlots')?.value;
+            const stamina = document.getElementById('stamina')?.value;
+            const weight = document.getElementById('weight')?.value;
+            const hafuCoin = document.getElementById('hafuCoin')?.value;
+            const ratioInput = document.getElementById('ratio');
+            
+            if (!ratioInput) {
+                console.log('比例输入框未找到');
+                return;
+            }
+            
+            // 检查是否所有必要字段都已填写
+            if (!insuranceSlots || !stamina || !weight) {
+                ratioInput.value = '';
+                console.log('必要字段未填写完整:', { insuranceSlots, stamina, weight });
+                return;
+            }
+            
+            // 构建查询键
+            const key = insuranceSlots + stamina + weight;
+            console.log('计算比例 - 查询键:', key);
+            
+            // 比例对应表
+            const ratioTable = {
+                '977': '1:33.5', '976': '1:34', '975': '1:34', '974': '1:34.5', '973': '1:35',
+                '967': '1:34', '966': '1:34', '965': '1:34.5', '964': '1:34.5', '963': '1:35',
+                '957': '1:34.5', '956': '1:35', '955': '1:35', '954': '1:35.5', '953': '1:35.5',
+                '947': '1:35.5', '946': '1:35.5', '945': '1:36', '944': '1:36', '943': '1:36',
+                '937': '1:36', '936': '1:36', '935': '1:36.5', '934': '1:36.5', '933': '1:36.5',
+                '677': '1:36', '676': '1:36', '675': '1:37', '674': '1:37', '673': '1:37',
+                '667': '1:36', '666': '1:36.5', '665': '1:36.5', '664': '1:36.5', '663': '1:36.5',
+                '657': '1:37', '656': '1:37', '655': '1:37', '654': '1:37', '653': '1:37',
+                '647': '1:37.5', '646': '1:37.5', '645': '1:37.5', '644': '1:37.5', '643': '1:37.5',
+                '637': '1:37.5', '636': '1:37.5', '635': '1:37.5', '634': '1:37.5', '633': '1:37.5',
+                '477': '1:37', '476': '1:37', '475': '1:37', '474': '1:37', '473': '1:37.5',
+                '467': '1:37.5', '466': '1:37.5', '465': '1:37.5', '464': '1:37.5', '463': '1:37.5',
+                '457': '1:38', '456': '1:38', '455': '1:39', '454': '1:38', '453': '1:38',
+                '447': '1:38.5', '446': '1:38.5', '445': '1:38.5', '444': '1:38.5', '443': '1:38.5', 
+                '442': '1:38.5', '433': '1:38.5'
+            };
+            
+            // 查找对应的比例
+            let ratio = ratioTable[key];
+            if (!ratio) {
+                // 如果未找到对应比例，根据保险格数设置默认比例
+                const defaultRatioTable = {
+                    '2': '1:42',
+                    '4': '1:40',
+                    '6': '1:38.5',
+                    '9': '1:37'
+                };
+                ratio = defaultRatioTable[insuranceSlots];
+                if (!ratio) {
+                    ratioInput.value = '未找到对应比例';
+                    return;
+                }
+            }
+            
+            // 根据哈夫币数量调整比例
+            if (hafuCoin && parseFloat(hafuCoin) > 0) {
+                const hafuCoinValue = parseFloat(hafuCoin);
+                
+                // 如果哈夫币小于130，或者未填写时，则比例还是按原来的比例
+                if (hafuCoinValue >= 130) {
+                    // 从比例中提取右边的数字
+                    const ratioMatch = ratio.match(/1:(\d+(?:\.\d+)?)/); 
+                    if (ratioMatch) {
+                        let ratioValue = parseFloat(ratioMatch[1]);
+                        
+                        if (hafuCoinValue >= 230) {
+                            // 如果哈夫币大于230，则比例右边要加1.5
+                            ratioValue += 1.5;
+                        } else if (hafuCoinValue >= 130) {
+                            // 如果哈夫币大于130，则比例右边要加1
+                            ratioValue += 1;
+                        }
+                        
+                        // 重新构建比例字符串
+                        ratio = '1:' + ratioValue;
+                    }
+                }
+            }
+            
+            // 检查皮肤选择情况并调整比例
+            const knifeSkins = getMultiselectValues('knifeSkins');
+            const operatorSkins = getMultiselectValues('operatorSkins');
+            
+            console.log('计算比例 - 皮肤选择情况:', {
+                knifeSkins: knifeSkins,
+                operatorSkins: operatorSkins,
+                beforeAdjustment: ratio
+            });
+            
+            // 从比例中提取右边的数字进行皮肤调整
+            const finalRatioMatch = ratio.match(/1:(\d+(?:\.\d+)?)/); 
+            if (finalRatioMatch) {
+                let finalRatioValue = parseFloat(finalRatioMatch[1]);
+                let adjustments = [];
+                
+                // 如果选择了刀皮，比例右边减1
+                if (knifeSkins.length > 0) {
+                    finalRatioValue -= 1;
+                    adjustments.push('刀皮-1');
+                }
+                
+                // 如果选择了干员红皮，比例右边减1
+                if (operatorSkins.length > 0) {
+                    finalRatioValue -= 1;
+                    adjustments.push('干员红皮-1');
+                }
+                
+                // 确保比例不会变成负数或过小
+                if (finalRatioValue < 1) {
+                    finalRatioValue = 1;
+                    adjustments.push('最小值限制为1');
+                }
+                
+                // 重新构建最终比例字符串
+                ratio = '1:' + finalRatioValue;
+                
+                console.log('比例调整结果:', {
+                    adjustments: adjustments,
+                    finalRatio: ratio
+                });
+            }
+            
+            ratioInput.value = ratio;
+            console.log('比例计算完成，设置值为:', ratio);
+        }
+        
+        // 租期计算逻辑
+        function calculateRentalDays() {
+            const hafuCoin = document.getElementById('hafuCoin')?.value;
+            const rentalDaysInput = document.getElementById('rentalDays');
+            
+            if (!rentalDaysInput) {
+                console.log('租期输入框未找到');
+                return;
+            }
+            
+            // 检查哈夫币是否已填写
+            if (!hafuCoin || parseFloat(hafuCoin) <= 0) {
+                rentalDaysInput.value = '';
+                console.log('哈夫币未填写或为0:', hafuCoin);
+                return;
+            }
+            
+            const hafuCoinValue = parseFloat(hafuCoin);
+            // 计算租期：哈夫币纯币 / 10，保留整数部分
+            const rentalDays = Math.floor(hafuCoinValue / 10);
+            
+            rentalDaysInput.value = rentalDays;
+            console.log('租期计算完成，设置值为:', rentalDays);
+        }
+        
+        // 获取多选框的值（移动到前面优先定义）
+        function getMultiselectValues(name) {
+            const multiselect = document.querySelector(`[data-name="${name}"]`);
+            if (!multiselect) {
+                console.log(`多选框 ${name} 未找到`);
+                return [];
+            }
+            
+            const selectedOptions = multiselect.querySelectorAll('input[type="checkbox"]:checked');
+            const values = Array.from(selectedOptions).map(cb => cb.value);
+            console.log(`获取 ${name} 的选中值:`, values);
+            return values;
+        }
+        
+        // 自定义多选下拉框功能
+        function toggleMultiselect(display) {
+            const dropdown = display.nextElementSibling;
+            const arrow = display.querySelector('.multiselect-arrow');
+            const isOpen = dropdown.classList.contains('show');
+            
+            // 关闭所有其他下拉框
+            document.querySelectorAll('.multiselect-dropdown.show').forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.classList.remove('show');
+                    dd.previousElementSibling.classList.remove('active');
+                    dd.previousElementSibling.querySelector('.multiselect-arrow').classList.remove('open');
+                }
+            });
+            
+            if (isOpen) {
+                dropdown.classList.remove('show');
+                display.classList.remove('active');
+                arrow.classList.remove('open');
+            } else {
+                dropdown.classList.add('show');
+                display.classList.add('active');
+                arrow.classList.add('open');
+            }
+        }
+        
+        function selectOption(optionElement, value) {
+            event.stopPropagation();
+            
+            const checkbox = optionElement.querySelector('input[type="checkbox"]');
+            const multiselect = optionElement.closest('.custom-multiselect');
+            const display = multiselect.querySelector('.multiselect-display');
+            const selectedContainer = display.querySelector('.multiselect-selected');
+            
+            // 切换选中状态
+            checkbox.checked = !checkbox.checked;
+            
+            if (checkbox.checked) {
+                optionElement.classList.add('selected');
+            } else {
+                optionElement.classList.remove('selected');
+            }
+            
+            // 更新显示
+            updateMultiselectDisplay(multiselect);
+            
+            // 保存到localStorage
+            saveMultiselectToStorage(multiselect);
+            
+            // 重新计算比例和租金
+            console.log('皮肤选择发生变化，重新计算比例', {
+                knifeSkins: getMultiselectValues('knifeSkins'),
+                operatorSkins: getMultiselectValues('operatorSkins')
+            });
+            // 使用setTimeout确保DOM更新完成后再计算
+            setTimeout(() => {
+                calculateRatio();
+                setTimeout(calculateRent, 100);
+            }, 10);
+        }
+        
+        function removeTag(tagElement, value) {
+            event.stopPropagation();
+            
+            const multiselect = tagElement.closest('.custom-multiselect');
+            const option = multiselect.querySelector(`input[value="${value}"]`).parentElement;
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            
+            checkbox.checked = false;
+            option.classList.remove('selected');
+            
+            updateMultiselectDisplay(multiselect);
+            saveMultiselectToStorage(multiselect);
+            
+            // 重新计算比例和租金
+            console.log('皮肤标签被移除，重新计算比例', {
+                removedValue: value,
+                knifeSkins: getMultiselectValues('knifeSkins'),
+                operatorSkins: getMultiselectValues('operatorSkins')
+            });
+            // 使用setTimeout确保DOM更新完成后再计算
+            setTimeout(() => {
+                calculateRatio();
+                setTimeout(calculateRent, 100);
+            }, 10);
+        }
+        
+        function updateMultiselectDisplay(multiselect) {
+            const selectedContainer = multiselect.querySelector('.multiselect-selected');
+            const selectedOptions = multiselect.querySelectorAll('input[type="checkbox"]:checked');
+            const placeholder = multiselect.querySelector('.multiselect-placeholder');
+            
+            // 清空容器
+            selectedContainer.innerHTML = '';
+            
+            if (selectedOptions.length === 0) {
+                // 显示占位符
+                const name = multiselect.getAttribute('data-name');
+                const placeholderText = name === 'knifeSkins' ? '请选择刀皮' : '请选择干员红皮';
+                selectedContainer.innerHTML = `<span class="multiselect-placeholder">${placeholderText}</span>`;
+            } else {
+                // 显示选中的标签
+                selectedOptions.forEach(checkbox => {
+                    const tag = document.createElement('div');
+                    tag.className = 'multiselect-tag';
+                    tag.innerHTML = `
+                        <span>${checkbox.value}</span>
+                        <span class="remove" onclick="removeTag(this, '${checkbox.value}')">×</span>
+                    `;
+                    selectedContainer.appendChild(tag);
+                });
+            }
+        }
+        
+        function saveMultiselectToStorage(multiselect) {
+            const name = multiselect.getAttribute('data-name');
+            const selectedOptions = multiselect.querySelectorAll('input[type="checkbox"]:checked');
+            const values = Array.from(selectedOptions).map(cb => cb.value);
+            localStorage.setItem(name, JSON.stringify(values));
+        }
+        
+
+        // 点击外部关闭下拉框
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.custom-multiselect')) {
+                document.querySelectorAll('.multiselect-dropdown.show').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                    dropdown.previousElementSibling.classList.remove('active');
+                    dropdown.previousElementSibling.querySelector('.multiselect-arrow').classList.remove('open');
+                });
+            }
+        });
+        
+        function copyToClipboard() {
+            // 防止重复触发
+            if (window.isCopying) {
+                console.log('复制操作正在进行中，请稍候...');
+                return;
+            }
+            
+            window.isCopying = true;
+            
+            const form = document.getElementById('gameForm');
+            const formData = new FormData(form);
+            let result = '';
+            
+            // 收集刀皮选择项
+            const knifeSkins = getMultiselectValues('knifeSkins');
+            
+            // 收集干员红皮选择项
+            const operatorSkins = getMultiselectValues('operatorSkins');
+            
+            // 合并皮肤信息
+            let combinedSkins = '';
+            if (knifeSkins.length > 0 || operatorSkins.length > 0) {
+                const skinParts = [];
+                if (knifeSkins.length > 0) {
+                    skinParts.push(knifeSkins.join('、'));
+                }
+                if (operatorSkins.length > 0) {
+                    skinParts.push(operatorSkins.join('、'));
+                }
+                combinedSkins = skinParts.join('、');
+            }
+            
+
+            // 按照指定顺序定义字段
+            const orderedFields = [
+                { key: 'hafuCoin', label: '哈夫币纯币(单位M，1M=100W)' },
+                { key: 'rank', label: '段位' },
+                { key: 'level', label: '等级' },
+                { key: 'insuranceSlots', label: '保险格数' },
+                { key: 'stamina', label: '体力(训练中心)' },
+                { key: 'weight', label: '负重(靶场等级)' },
+                { key: 'awm', label: 'AWM子弹数量' },
+                { key: 'helmet6', label: '6头数量' },
+                { key: 'armor6', label: '6甲数量' },
+                { key: 'skins', label: '皮肤（刀皮+干员红皮）', customValue: combinedSkins },
+                { key: 'kd', label: '绝密KD' },
+                { key: 'deposit', label: '押金（租客缴纳，封号赔偿用）' },
+                { key: 'onlineTime', label: '号主在线时间（需配合人脸验证！）' },
+                { key: 'banRecord', label: '封禁记录(没有可不填写)' },
+                { key: 'rentalDays', label: '租期（天）' },
+                { key: 'loginMethod', label: '上号方式' },
+                { key: 'phone', label: '联系电话' },
+                { key: 'ratio', label: '回收比例' },
+                { key: 'rent', label: '回收租金' }
+            ];
+            
+            // 按照指定顺序构建复制内容
+            orderedFields.forEach(field => {
+                if (field.customValue !== undefined) {
+                    value = field.customValue;
+                } else {
+                    value = formData.get(field.key) || '';
+                }
+                result += `${field.label}：${value.toString().trim()}\n`;
+            });
+            
+            // 检测iOS设备
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            
+            // 尝试复制到剪切板
+            if (navigator.clipboard && window.isSecureContext && !isIOS) {
+                // 使用现代 Clipboard API（非iOS设备）
+                navigator.clipboard.writeText(result).then(() => {
+                    showSuccessMessage();
+                }).catch(err => {
+                    console.log('Clipboard API失败，使用降级方案:', err);
+                    fallbackCopyTextToClipboard(result);
+                });
+            } else {
+                // iOS设备或降级方案
+                fallbackCopyTextToClipboard(result);
+            }
+            
+            // 超时保护：5秒后自动重置状态
+            setTimeout(() => {
+                if (window.isCopying) {
+                    console.log('复制操作超时，重置状态');
+                    window.isCopying = false;
+                }
+            }, 5000);
+        }
+        
+        function fallbackCopyTextToClipboard(text) {
+            try {
+                // 检测iOS设备
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                    // iOS特殊处理
+                    iosCopyToClipboard(text);
+                } else {
+                    // 其他设备的降级方案
+                    standardFallbackCopy(text);
+                }
+            } catch (err) {
+                console.error('降级复制失败:', err);
+                // 确保状态被重置
+                window.isCopying = false;
+                showManualCopyPrompt(text);
+            }
+        }
+        
+        function iosCopyToClipboard(text) {
+            // iOS Safari兼容的复制方法 - 优化版本
+            let copySuccess = false;
+            let attempts = 0;
+            const maxAttempts = 3;
+            
+            function attemptCopy() {
+                attempts++;
+                console.log(`iOS复制尝试 ${attempts}/${maxAttempts}`);
+                
+                // 清理之前的元素
+                const existingTextArea = document.querySelector('.ios-copy-textarea');
+                if (existingTextArea) {
+                    document.body.removeChild(existingTextArea);
+                }
+                
+                // 创建新的textarea元素
+                const textArea = document.createElement('textarea');
+                textArea.className = 'ios-copy-textarea';
+                textArea.value = text;
+                textArea.style.cssText = `
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    width: 2em;
+                    height: 2em;
+                    padding: 0;
+                    border: none;
+                    outline: none;
+                    box-shadow: none;
+                    background: transparent;
+                    font-size: 16px;
+                    opacity: 0;
+                    pointer-events: none;
+                    z-index: -1;
+                `;
+                textArea.setAttribute('readonly', '');
+                textArea.setAttribute('aria-hidden', 'true');
+                
+                document.body.appendChild(textArea);
+                
+                // 延迟执行复制操作，确保DOM稳定
+                setTimeout(() => {
+                    try {
+                        // 方法1: 直接execCommand
+                        textArea.focus();
+                        textArea.select();
+                        
+                        if (document.execCommand('copy')) {
+                            copySuccess = true;
+                            console.log('execCommand复制成功');
+                        } else {
+                            // 方法2: 使用selection API
+                            const selection = window.getSelection();
+                            const range = document.createRange();
+                            range.selectNodeContents(textArea);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+                            
+                            if (document.execCommand('copy')) {
+                                copySuccess = true;
+                                console.log('selection API复制成功');
+                            }
+                            
+                            selection.removeAllRanges();
+                        }
+                        
+                        // 清理元素
+                        if (textArea.parentNode) {
+                            textArea.parentNode.removeChild(textArea);
+                        }
+                        
+                        if (copySuccess) {
+                            showSuccessMessage();
+                        } else if (attempts < maxAttempts) {
+                            // 重试
+                            console.log(`复制失败，${100 * attempts}ms后重试...`);
+                            setTimeout(attemptCopy, 100 * attempts);
+                        } else {
+                            // 所有尝试都失败
+                            console.log('所有复制尝试都失败，显示手动复制提示');
+                            showManualCopyPrompt(text);
+                        }
+                        
+                    } catch (err) {
+                        console.log(`复制尝试${attempts}失败:`, err);
+                        
+                        // 清理元素
+                        if (textArea.parentNode) {
+                            textArea.parentNode.removeChild(textArea);
+                        }
+                        
+                        if (attempts < maxAttempts) {
+                            // 重试
+                            setTimeout(attemptCopy, 100 * attempts);
+                        } else {
+                            // 所有尝试都失败
+                            showManualCopyPrompt(text);
+                        }
+                    }
+                }, 50); // 50ms延迟确保DOM稳定
+            }
+            
+            // 开始第一次尝试
+            attemptCopy();
+        }
+        
+        function standardFallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            textArea.style.fontSize = '16px'; // 防止iOS缩放
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const copySuccess = document.execCommand('copy');
+                if (copySuccess) {
+                    showSuccessMessage();
+                } else {
+                    showManualCopyPrompt(text);
+                }
+            } catch (err) {
+                console.error('复制失败:', err);
+                showManualCopyPrompt(text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        function showManualCopyPrompt(text) {
+            // 重置复制状态
+            window.isCopying = false;
+            
+            // 创建模态框显示复制内容
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                box-sizing: border-box;
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                padding: 25px;
+                border-radius: 12px;
+                max-width: 90%;
+                max-height: 80%;
+                overflow-y: auto;
+                position: relative;
+            `;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '✕';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                color: #666;
+                padding: 5px;
+            `;
+            
+            const title = document.createElement('h3');
+            title.textContent = '复制失败，请手动复制以下内容：';
+            title.style.cssText = `
+                margin: 0 0 15px 0;
+                color: #333;
+                font-size: 16px;
+            `;
+            
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.cssText = `
+                width: 100%;
+                min-height: 200px;
+                padding: 12px;
+                border: 2px solid #e8f5e8;
+                border-radius: 8px;
+                font-family: monospace;
+                font-size: 14px;
+                resize: vertical;
+                box-sizing: border-box;
+            `;
+            
+            const instruction = document.createElement('p');
+            instruction.textContent = '长按上方内容，选择"全选"，然后选择"复制"';
+            instruction.style.cssText = `
+                margin: 15px 0 0 0;
+                color: #666;
+                font-size: 14px;
+                text-align: center;
+            `;
+            
+            closeBtn.onclick = () => document.body.removeChild(modal);
+            modal.onclick = (e) => {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            };
+            
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(title);
+            modalContent.appendChild(textArea);
+            modalContent.appendChild(instruction);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // 自动聚焦到文本框
+            textArea.focus();
+            textArea.select();
+        }
+        
+        function showSuccessMessage() {
+            // 重置复制状态
+            window.isCopying = false;
+            
+            // 显示成功提示
+            const message = document.createElement('div');
+            message.textContent = '✅ 已成功复制到剪切板！';
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(76, 175, 80, 0.9);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-weight: 500;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                animation: slideDown 0.3s ease-out;
+            `;
+            
+            // 添加动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideDown {
+                    from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(message);
+            
+            // 3秒后自动消失
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 3000);
+        }
+        
+        // 表单验证和实时保存
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检测iOS设备
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            
+            // 为iOS设备添加触摸事件支持
+            if (isIOS) {
+                const copyBtn = document.querySelector('.copy-btn');
+                if (copyBtn) {
+                    // 移除onclick，使用addEventListener
+                    copyBtn.removeAttribute('onclick');
+                    
+                    let isProcessing = false;
+                    let touchStartTime = 0;
+                    let touchTimeout = null;
+                    
+                    // 触摸开始
+                    copyBtn.addEventListener('touchstart', function(e) {
+                        if (isProcessing) {
+                            e.preventDefault();
+                            return;
+                        }
+                        
+                        touchStartTime = Date.now();
+                        this.style.transform = 'scale(0.95)';
+                        
+                        // 设置触摸超时，防止长按
+                        touchTimeout = setTimeout(() => {
+                            this.style.transform = '';
+                        }, 500);
+                        
+                    }, { passive: false });
+                    
+                    // 触摸结束
+                    copyBtn.addEventListener('touchend', function(e) {
+                        if (isProcessing) {
+                            e.preventDefault();
+                            return;
+                        }
+                        
+                        const touchDuration = Date.now() - touchStartTime;
+                        
+                        // 清理触摸超时
+                        if (touchTimeout) {
+                            clearTimeout(touchTimeout);
+                            touchTimeout = null;
+                        }
+                        
+                        // 恢复按钮状态
+                        this.style.transform = '';
+                        
+                        // 检查触摸时长，避免长按误触
+                        if (touchDuration > 50 && touchDuration < 500) {
+                            // 防止重复触发
+                            isProcessing = true;
+                            
+                            // 添加视觉反馈
+                            this.style.opacity = '0.7';
+                            
+                            // 执行复制操作
+                            setTimeout(() => {
+                                copyToClipboard();
+                                
+                                // 延迟恢复状态
+                                setTimeout(() => {
+                                    isProcessing = false;
+                                    this.style.opacity = '';
+                                }, 1000);
+                            }, 100);
+                        }
+                        
+                    }, { passive: false });
+                    
+                    // 触摸取消
+                    copyBtn.addEventListener('touchcancel', function(e) {
+                        if (touchTimeout) {
+                            clearTimeout(touchTimeout);
+                            touchTimeout = null;
+                        }
+                        this.style.transform = '';
+                    }, { passive: false });
+                    
+                    // 点击事件（作为备用）
+                    copyBtn.addEventListener('click', function(e) {
+                        if (isProcessing) {
+                            e.preventDefault();
+                            return;
+                        }
+                        
+                        // 防止重复触发
+                        isProcessing = true;
+                        this.style.opacity = '0.7';
+                        
+                        setTimeout(() => {
+                            copyToClipboard();
+                            
+                            setTimeout(() => {
+                                isProcessing = false;
+                                this.style.opacity = '';
+                            }, 1000);
+                        }, 100);
+                    });
+                }
+            }
+            
+            const inputs = document.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                // 实时保存到localStorage（但不恢复）
+                input.addEventListener('input', function() {
+                    localStorage.setItem(this.name, this.value);
+                });
+                
+                // 为多选框添加change事件监听
+                if (input.type === 'select-multiple' || input.multiple) {
+                    input.addEventListener('change', function() {
+                        const selectedValues = Array.from(this.selectedOptions).map(option => option.value);
+                        localStorage.setItem(this.name, JSON.stringify(selectedValues));
+                    });
+                }
+            });
+            
+            // 初始化自定义多选框
+            document.querySelectorAll('.custom-multiselect').forEach(multiselect => {
+                updateMultiselectDisplay(multiselect);
+            });
+            
+            // 初始化时计算一次比例和租期
+            calculateRatio();
+            calculateRentalDays();
+            setTimeout(calculateRent, 100);
+            
+            // 哈夫币输入限制
+            const hafuCoinInput = document.getElementById('hafuCoin');
+            hafuCoinInput.addEventListener('input', function() {
+                let value = this.value;
+                
+                // 只允许数字和小数点
+                value = value.replace(/[^0-9.]/g, '');
+                
+                // 防止多个小数点
+                value = value.replace(/(\..*)\./g, '$1');
+                
+                // 限制小数点后只能有1位
+                if (value.includes('.')) {
+                    const parts = value.split('.');
+                    if (parts[1] && parts[1].length > 1) {
+                        value = parts[0] + '.' + parts[1].substring(0, 1);
+                    }
+                }
+                
+                this.value = value;
+            });
+            
+            // 绝密KD输入限制
+            const kdInput = document.getElementById('kd');
+            kdInput.addEventListener('input', function() {
+                let value = this.value;
+                
+                // 只允许数字和小数点
+                value = value.replace(/[^0-9.]/g, '');
+                
+                // 防止多个小数点
+                value = value.replace(/(\..*)\./g, '$1');
+                
+                // 限制小数点后只能有1位
+                if (value.includes('.')) {
+                    const parts = value.split('.');
+                    if (parts[1] && parts[1].length > 1) {
+                        value = parts[0] + '.' + parts[1].substring(0, 1);
+                    }
+                }
+                
+                this.value = value;
+            });
+            
+            // 整数输入限制（等级、体力、负重、AWM、6头、6甲）
+            const integerInputs = ['level', 'stamina', 'weight', 'awm', 'helmet6', 'armor6'];
+            integerInputs.forEach(inputId => {
+                const input = document.getElementById(inputId);
+                input.addEventListener('input', function() {
+                    // 只允许输入数字
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                });
+            });
+            
+            // 押金输入限制（只能输入数字，不限制小数位数）
+            const depositInput = document.getElementById('deposit');
+            depositInput.addEventListener('input', function() {
+                // 只允许输入数字和小数点
+                this.value = this.value.replace(/[^0-9.]/g, '');
+                
+                // 防止多个小数点
+                this.value = this.value.replace(/(\..*)\./g, '$1');
+            });
+            
+            // 比例计算逻辑
+            function calculateRatio() {
+                const insuranceSlots = document.getElementById('insuranceSlots').value;
+                const stamina = document.getElementById('stamina').value;
+                const weight = document.getElementById('weight').value;
+                const hafuCoin = document.getElementById('hafuCoin').value;
+                const ratioInput = document.getElementById('ratio');
+                
+                // 检查是否所有必要字段都已填写
+                if (!insuranceSlots || !stamina || !weight) {
+                    ratioInput.value = '';
+                    return;
+                }
+                
+                // 构建查询键
+                const key = insuranceSlots + stamina + weight;
+                console.log(key);
+                
+                
+				// 比例对应表
+                const ratioTable = {
+                    '977': '1:33.5', '976': '1:34', '975': '1:34', '974': '1:34.5', '973': '1:35',
+                    '967': '1:34', '966': '1:34', '965': '1:34.5', '964': '1:34.5', '963': '1:35',
+                    '957': '1:34.5', '956': '1:35', '955': '1:35', '954': '1:35.5', '953': '1:35.5',
+                    '947': '1:35.5', '946': '1:35.5', '945': '1:36', '944': '1:36', '943': '1:36',
+                    '937': '1:36', '936': '1:36', '935': '1:36.5', '934': '1:36.5', '933': '1:36.5',
+                    '677': '1:36', '676': '1:36', '675': '1:37', '674': '1:37', '673': '1:37',
+                    '667': '1:36', '666': '1:36.5', '665': '1:36.5', '664': '1:36.5', '663': '1:36.5',
+                    '657': '1:37', '656': '1:37', '655': '1:37', '654': '1:37', '653': '1:37',
+                    '647': '1:37.5', '646': '1:37.5', '645': '1:37.5', '644': '1:37.5', '643': '1:37.5',
+                    '637': '1:37.5', '636': '1:37.5', '635': '1:37.5', '634': '1:37.5', '633': '1:37.5',
+                    '477': '1:37', '476': '1:37', '475': '1:37', '474': '1:37', '473': '1:37.5',
+                    '467': '1:37.5', '466': '1:37.5', '465': '1:37.5', '464': '1:37.5', '463': '1:37.5',
+                    '457': '1:38', '456': '1:38', '455': '1:39', '454': '1:38', '453': '1:38',
+                    '447': '1:38.5', '446': '1:38.5', '445': '1:38.5', '444': '1:38.5', '443': '1:38.5', 
+                    '442': '1:38.5', '433': '1:38.5'
+                };
+                
+                // 查找对应的比例
+                let ratio = ratioTable[key];
+                if (!ratio) {
+                    // 如果未找到对应比例，根据保险格数设置默认比例
+                    const defaultRatioTable = {
+                        '2': '1:42',
+                        '4': '1:40',
+                        '6': '1:38.5',
+                        '9': '1:37'
+                    };
+                    ratio = defaultRatioTable[insuranceSlots];
+                    if (!ratio) {
+                        ratioInput.value = '未找到对应比例';
+                        return;
+                    }
+                }
+                
+                // 根据哈夫币数量调整比例
+                if (hafuCoin && parseFloat(hafuCoin) > 0) {
+                    const hafuCoinValue = parseFloat(hafuCoin);
+                    
+                    // 如果哈夫币小于130，或者未填写时，则比例还是按原来的比例
+                    if (hafuCoinValue >= 130) {
+                        // 从比例中提取右边的数字
+                        const ratioMatch = ratio.match(/1:(\d+(?:\.\d+)?)/);
+                        if (ratioMatch) {
+                            let ratioValue = parseFloat(ratioMatch[1]);
+                            
+                            if (hafuCoinValue >= 230) {
+                                // 如果哈夫币大于230，则比例右边要加1.5
+                                ratioValue += 1.5;
+                            } else if (hafuCoinValue >= 130) {
+                                // 如果哈夫币大于130，则比例右边要加1
+                                ratioValue += 1;
+                            }
+                            
+                            // 重新构建比例字符串
+                            ratio = '1:' + ratioValue;
+                        }
+                    }
+                }
+                
+                // 检查皮肤选择情况并调整比例
+                const knifeSkins = getMultiselectValues('knifeSkins');
+                const operatorSkins = getMultiselectValues('operatorSkins');
+                
+                console.log('计算比例 - 皮肤选择情况:', {
+                    knifeSkins: knifeSkins,
+                    operatorSkins: operatorSkins,
+                    beforeAdjustment: ratio
+                });
+                
+                // 从比例中提取右边的数字进行皮肤调整
+                const finalRatioMatch = ratio.match(/1:(\d+(?:\.\d+)?)/); 
+                if (finalRatioMatch) {
+                    let finalRatioValue = parseFloat(finalRatioMatch[1]);
+                    let adjustments = [];
+                    
+                    // 如果选择了刀皮，比例右边减1
+                    if (knifeSkins.length > 0) {
+                        finalRatioValue -= 1;
+                        adjustments.push('刀皮-1');
+                    }
+                    
+                    // 如果选择了干员红皮，比例右边减1
+                    if (operatorSkins.length > 0) {
+                        finalRatioValue -= 1;
+                        adjustments.push('干员红皮-1');
+                    }
+                    
+                    // 确保比例不会变成负数或过小
+                    if (finalRatioValue < 1) {
+                        finalRatioValue = 1;
+                        adjustments.push('最小值限制为1');
+                    }
+                    
+                    // 重新构建最终比例字符串
+                    ratio = '1:' + finalRatioValue;
+                    
+                    console.log('比例调整结果:', {
+                        adjustments: adjustments,
+                        finalRatio: ratio
+                    });
+                }
+                
+                ratioInput.value = ratio;
+            }
+            
+            // 为相关字段添加比例和租期计算监听器
+            const ratioRelatedInputs = ['insuranceSlots', 'stamina', 'weight', 'hafuCoin'];
+            ratioRelatedInputs.forEach(inputId => {
+                const input = document.getElementById(inputId);
+                input.addEventListener('input', function() {
+                    calculateRatio();
+                    // 延迟一点时间确保比例字段已更新，然后计算租金
+                    setTimeout(calculateRent, 100);
+                    // 如果是哈夫币字段，同时计算租期
+                    if (inputId === 'hafuCoin') {
+                        calculateRentalDays();
+                    }
+                });
+                input.addEventListener('change', function() {
+                    calculateRatio();
+                    // 延迟一点时间确保比例字段已更新，然后计算租金
+                    setTimeout(calculateRent, 100);
+                    // 如果是哈夫币字段，同时计算租期
+                    if (inputId === 'hafuCoin') {
+                        calculateRentalDays();
+                    }
+                });
+            });
+            
+            // 为皮肤选择框添加变化监听（用于事件委托）
+            document.addEventListener('change', function(event) {
+                if (event.target.matches('.custom-multiselect input[type="checkbox"]')) {
+                    // 皮肤选择发生变化，重新计算比例
+                    setTimeout(() => {
+                        calculateRatio();
+                        setTimeout(calculateRent, 100);
+                    }, 50);
+                }
+            });
+            
+            // 租金计算逻辑
+            function calculateRent() {
+                const hafuCoin = document.getElementById('hafuCoin').value;
+                const ratio = document.getElementById('ratio').value;
+                const rentInput = document.getElementById('rent');
+                
+                // 检查是否所有必要字段都已填写
+                if (!hafuCoin || !ratio) {
+                    rentInput.value = '';
+                    return;
+                }
+                
+                // 从比例中提取右边的数字
+                const ratioMatch = ratio.match(/1:(\d+(?:\.\d+)?)/);
+                if (!ratioMatch) {
+                    rentInput.value = '比例格式错误';
+                    return;
+                }
+                
+                const ratioValue = parseFloat(ratioMatch[1]);
+                const hafuCoinValue = parseFloat(hafuCoin);
+                
+                // 计算租金：哈夫币纯币/比例右边部分*10000，保留整数
+                const rent = Math.round(hafuCoinValue / ratioValue * 100);
+                rentInput.value = rent;
+            }
+            
+            // 为哈夫币字段添加租金计算监听器
+            hafuCoinInput.addEventListener('input', calculateRent);
+            hafuCoinInput.addEventListener('change', calculateRent);
+        });
+    </script>
+
+
+</body></html>
